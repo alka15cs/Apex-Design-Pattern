@@ -1,0 +1,21 @@
+trigger Accounttrigger on Account (after insert, after update) { 
+
+    if (Trigger.isAfter && (Trigger.isInsert || Trigger.isUpdate)) { 
+
+        List<Account> accountList = new List<Account>(); 
+
+        for (Account acc : trigger.new) { 
+
+            // check the current and prior Name for trigger update  
+            if (acc.Name == 'ABC' && (trigger.isInsert || (trigger.isUpdate && trigger.oldMap.get(acc.id).Name != 'ABC'))) 
+                accountList.add(acc); 
+        } 
+
+        if (!accountList.isEmpty()) { 
+            AccountTriggerHandler accHandler = new AccountTriggerHandler(); 
+            accHandler.createContact(accountList);
+        }   
+    } 
+}
+
+
