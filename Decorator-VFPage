@@ -1,0 +1,10 @@
+<apex:page controller="InvoiceController">
+ <apex:form >
+  <apex:pageBlock title="Invoice List">
+   <apex:pageBlockTable value="{!allInvoices}" var="invoice">
+    <apex:column headerValue="Invoice Number" value="{!invoice.Name}" />
+    <apex:column headerValue="Total Price" value="{!invoice.priceInINR}"/>
+   </apex:pageBlockTable>
+  </apex:pageBlock>
+ </apex:form>
+</apex:page>
