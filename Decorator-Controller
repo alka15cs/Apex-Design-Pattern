@@ -1,0 +1,29 @@
+public with sharing class InvoiceController {
+ public List<ConvertedInvoice> allInvoices{set; get;}
+ 
+ public InvoiceController(){
+  List<Invoice__c> allInvoicesList = [SELECT ID, Name, Amount__c FROM Invoice__c];
+  if(allExpenses.size() > 0){
+   allInvoices = new List<ConvertedInvoice>();
+   for(Invoice__c invoice: allInvoicesList){
+    allInvoices.add(new ConvertedInvoice(invoice));
+   }
+  }
+ }
+ 
+ public class ConvertedInvoice{
+  
+  private Double DOLLAR_INR = 70.7847;
+  public String Name {get;set;}
+  public Double invoiceAmountDLR;
+  public Double priceInINR {get;set;}
+  
+  
+  public ConvertedInvoice(Invoice__c invoice){
+   Name = invoice.Name;
+   invoiceAmountDLR = invoice.Amount__c;
+   priceInINR = invoiceAmountDLR * DOLLAR_INR;
+   
+  }
+ }
+}
