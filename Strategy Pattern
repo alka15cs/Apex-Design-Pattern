@@ -1,0 +1,47 @@
+//AmountCalculation Class
+public interface AmountCalculation {
+   public int doOperation(int num1, int num2);
+}
+
+//OperationAdd Class implementing AmountCalculation
+public class OperationAdd implements AmountCalculation{
+   
+   public Override int doOperation(int num1, int num2) {
+      return num1 + num2;
+   }
+}
+
+//OperationSubstract Class implementing AmountCalculation
+public class OperationSubstract implements AmountCalculation{
+  
+   public Override  int doOperation(int num1, int num2) {
+      return num1 - num2;
+   }
+}
+
+////Now in the above example you can see we have created a single method doOperation inside class AmountCalculation, and created two different class named OperationAdd and OperationSubstract which both are implementing AmountCalculation class, now let’s see how the behaviour will change for the methods at the run time is:
+
+// Context class calls AmountCalculation
+public class Context {
+   private AmountCalculation AmountCalculationCls;
+
+   public Context(AmountCalculation AmountCalculationCls){
+      this.AmountCalculationCls = AmountCalculationCls;
+   }
+
+   public int executeAmountCalculation(int num1, int num2){
+      return AmountCalculationCls.doOperation(num1, num2);
+   }
+
+}
+
+Public class AmountCalculationDemo(){
+Public AmountCalculationDemo(){
+     Context context = new Context(new OperationAdd());		
+      System.debug('10 + 5 = ' + context.executeAmountCalculation(10, 5));
+
+      context = new Context(new OperationSubstract());		
+      System.debug('10 - 5 = ' + context.executeAmountCalculation(10, 5));
+}
+
+}
