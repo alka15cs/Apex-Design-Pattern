@@ -1,0 +1,16 @@
+public class SingletonController{
+    
+    public static SingletonController objInstance = null;
+    public Integer acctCount;
+    
+    public SingletonController() {
+        acctCount = [ SELECT COUNT() FROM Account ];
+    }
+    
+    public static SingletonController getInstance() {
+        if ( objInstance == null )
+            objInstance = new SingletonController();
+        return objInstance;
+    }
+    
+}
