@@ -1,0 +1,20 @@
+public class AccountTriggerHandler { 
+
+    List<Contact> contactList = new List<Contact>(); 
+
+    public void createContact(List<Account> accountList){ 
+
+        for(Account acc : accountList){ 
+
+            Contact con = new Contact(); 
+            con.AccountId = acc.Id; 
+            con.LastName = 'TestName'; 
+ 
+            contactList.add(con); 
+        } 
+
+        if(!contactList.isEmpty()){ 
+            insert contactList;    
+        } 
+    } 
+}
