@@ -1,0 +1,38 @@
+Public class Amount {
+    public void Sum() { 
+ 	    //your logic
+    }
+    public void Substract() { 
+	    //your logic
+    }
+}
+
+Public class TotalDays {
+    public void calculate(Integer i, Integer j) {
+     // your logic
+    }
+}
+
+/* Facade */
+class FacadeController {
+    private Amount priceSum;
+    private TotalDays day;
+
+    public FacadeController() {
+        this.priceSum = new Amount();
+        this.day = new TotalDays();
+    }
+
+    public void start() {
+        priceSum.Sum();
+        day.calculate(1, 5);
+    }
+}
+
+/* Client */
+public class You {
+    public You (){
+        FacadeController facade = new FacadeController();
+        facade.start();
+    }
+}
